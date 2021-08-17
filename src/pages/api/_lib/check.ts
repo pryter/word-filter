@@ -25,7 +25,7 @@ export const filter = async (text: string, req, res) => {
 
   const eslist = trainedList.split(" ")
 
-  wordcut.init();
+  wordcut.init("./dict.txt", true, eslist);
   const words = wordcut.cut(text.replace(/ /g, "")).split("|")
   let susList = []
   let cursed = false
@@ -40,7 +40,6 @@ export const filter = async (text: string, req, res) => {
   if (!cursed && susList.length > 0) {
     let batch = initialiseDB.batch()
     const fp = req.body.fp
-    const ip = req.headers['x-real-ip'] || req.connection.remoteAddress
     susList.forEach((item) => {
       batch.set(initialiseDB.collection("submitted").doc(item), {[fp]: {full: text.replace(/ /g, "")}}, {merge: true})
     })
