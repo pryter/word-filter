@@ -1,6 +1,6 @@
 export const Loader = () => {
   return (
-    <div className="-mt-2">
+    <div className="-mt-2 py-1">
       <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-6" xmlnsXlink="http://www.w3.org/1999/xlink"
            style={{margin: "auto", shapeRendering: "auto"}} viewBox="0 0 100 70" preserveAspectRatio="xMidYMid">
         <circle cx="84" cy="50" r="10" fill="#1A202C">

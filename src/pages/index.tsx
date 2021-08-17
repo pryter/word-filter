@@ -4,7 +4,7 @@ import {BanIcon, CheckIcon} from "@heroicons/react/solid";
 import classnames from "classnames"
 import {Loader} from "../vectors/Loader";
 
-const thaiChars = ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ', 'ง', 'จ', 'ฉ', 'ช', 'ซ', 'ฌ', 'ญ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ', 'ณ', 'ด', 'ต', 'ถ', 'ท', 'ธ', 'น', 'บ', 'ป', 'ผ', 'ฝ', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ฤ', 'ล', 'ฦ', 'ว', 'ศ', 'ษ', 'ส', 'ห', 'ฬ', 'อ', 'ฮ', 'ฯ', 'ะ', 'ั', 'า', 'ำ', 'ิ', 'ี', 'ึ', 'ื', 'ุ', 'ู', 'ฺ', '฿', 'เ', 'แ', 'โ', 'ใ', 'ไ', 'ๅ', 'ๆ', '็', '่', '้', '๊', '๋', '์', 'ํ', '๎', '๏', '๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙', '๚', '๛']
+const thaiChars = ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ', 'ง', 'จ', 'ฉ', 'ช', 'ซ', 'ฌ', 'ญ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ', 'ณ', 'ด', 'ต', 'ถ', 'ท', 'ธ', 'น', 'บ', 'ป', 'ผ', 'ฝ', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ฤ', 'ล', 'ฦ', 'ว', 'ศ', 'ษ', 'ส', 'ห', 'ฬ', 'อ', 'ฮ', 'ฯ', 'ะ', 'ั', 'า', 'ำ', 'ิ', 'ี', 'ึ', 'ื', 'ุ', 'ู', 'ฺ', '฿', 'เ', 'แ', 'โ', 'ใ', 'ไ', 'ๅ', 'ๆ', '็', '่', '้', '๊', '๋', '์', 'ํ', '๎', '๏', '๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙', '๚', '๛', ' ']
 
 const Page = () => {
 
@@ -43,7 +43,7 @@ const Page = () => {
           </div>
           <div className="flex sm:flex-row flex-col sm:space-x-4 sm:space-y-0 space-y-2">
             <div className="relative">
-              <input type="text" placeholder="เฉพาะคำภาษาไทยเท่านั้น" className={classnames("rounded-md placeholder-gray-300", def ? "" : cursed ? "border-red-600" : "border-green-500")} value={word} onChange={(e) => {checkText(e.target.value) ? setWord(e.target.value) : e.preventDefault()}}/>
+              <input type="text" placeholder="เฉพาะคำภาษาไทยเท่านั้น" className={classnames("rounded-md placeholder-gray-300 sm:w-auto w-72", def ? "" : cursed ? "border-red-600" : "border-green-500")} value={word} onChange={(e) => {checkText(e.target.value) ? setWord(e.target.value) : e.preventDefault()}}/>
               {!def && <div className="absolute top-0 right-2 h-full flex items-center">
                 {cursed ? <BanIcon className="w-5 h-5 text-red-600"/> : <CheckIcon className="w-5 h-5 text-green-500"/>}
               </div>}
