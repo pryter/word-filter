@@ -2,6 +2,7 @@ import wordcut from "wordcut"
 import Cookies from "cookies"
 import initialiseDB from "../../../lib/firebase-admin"
 import aes256 from "aes256"
+import {dict5000} from "./5000";
 
 export const filter = async (text: string, req, res) => {
   const cookies = new Cookies(req, res, {keys: [process.env.COOKIE_KEY]})
@@ -24,8 +25,8 @@ export const filter = async (text: string, req, res) => {
   }
 
   const eslist = trainedList.split(" ")
-
-  wordcut.init("/_dict/5000.txt", true, eslist);
+  const dict = dict5000
+  wordcut.init("./dict.txt", true, [...eslist, ...dict]);
   const words = wordcut.cut(text.replace(/ /g, "")).split("|")
   let susList = []
   let cursed = false
