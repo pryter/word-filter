@@ -25,7 +25,8 @@ export const filter = async (text: string, req, res) => {
 
   const eslist = trainedList.split(" ")
   const dict = await initialiseDB.collection("list").doc("dict").get()
-  wordcut.init("./dict.txt", true, [...eslist, ...dict.get("5000")]);
+  console.log(dict.get("5000").split("\n"))
+  wordcut.init("./dict.txt", true, [...eslist, ...dict.get("5000").split("\n")]);
   const words = wordcut.cut(text.replace(/ /g, "")).split("|")
   let susList = []
   let cursed = false
