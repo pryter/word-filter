@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import {request} from "../lib/request";
-import {BanIcon, CheckIcon} from "@heroicons/react/solid";
+import {ArrowRightIcon, BanIcon, CheckIcon} from "@heroicons/react/solid";
 import classnames from "classnames"
 import {Loader} from "../vectors/Loader";
+import Link from "next/link"
 
 const thaiChars = ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ', 'ง', 'จ', 'ฉ', 'ช', 'ซ', 'ฌ', 'ญ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ', 'ณ', 'ด', 'ต', 'ถ', 'ท', 'ธ', 'น', 'บ', 'ป', 'ผ', 'ฝ', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ฤ', 'ล', 'ฦ', 'ว', 'ศ', 'ษ', 'ส', 'ห', 'ฬ', 'อ', 'ฮ', 'ฯ', 'ะ', 'ั', 'า', 'ำ', 'ิ', 'ี', 'ึ', 'ื', 'ุ', 'ู', 'ฺ', '฿', 'เ', 'แ', 'โ', 'ใ', 'ไ', 'ๅ', 'ๆ', '็', '่', '้', '๊', '๋', '์', 'ํ', '๎', '๏', '๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙', '๚', '๛', ' ']
 
@@ -38,7 +39,12 @@ const Page = () => {
       <div className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-purple-300 via-blue-200 to-pink-300">
         <div className="flex flex-col bg-white rounded-lg shadow-lg px-4 py-4 space-y-4">
           <div>
-            <h1 className="text-lg text-gray-800">คำนี้หยาบหรือไม่</h1>
+            <div className="flex justify-between">
+              <h1 className="text-lg text-gray-800">คำนี้หยาบหรือไม่</h1>
+              <Link href="/learn">
+                <a className="text-sm font-normal text-gray-700 flex items-center space-x-1 hover:text-blue-500 hover:underline cursor-pointer"><span>ช่วยเรียนรู้ </span><ArrowRightIcon className="w-3 h-3"/></a>
+              </Link>
+            </div>
             <span className="text-gray-400 font-light">(ช่วยกันบริจาคคำหยาบหน่อยงับ)</span>
           </div>
           <div className="flex sm:flex-row flex-col sm:space-x-4 sm:space-y-0 space-y-2">
