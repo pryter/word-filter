@@ -19,6 +19,11 @@ const updateSamples = async () => {
     return remove.indexOf(c) === index
   });
 
+  await initialiseDB.collection("samples").doc("main").set({
+    data: remove,
+    timestamp: new Date().getTime()
+  })
+
   return remove
 }
 
