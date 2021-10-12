@@ -69,17 +69,17 @@ const Page = () => {
               <h1 className="text-lg text-center bg-gray-50 text-gray-800 py-2 rounded-md">{list[progess]}</h1>
               <p className="text-gray-800 text-xs absolute top-1 font-medium right-4 w-12">{progess + 1} / {list.length}</p>
               <div className="flex sm:flex-row flex-col sm:space-x-2 sm:space-y-0 space-y-2 justify-center">
-                <button className="sm:block hidden rounded-md border border-gray-500 text-gray-700 py-2 px-4 hover-hover:hover:bg-gray-500 hover-hover:hover:text-white" onClick={() => {setProg(prev => (prev - 1 > 0 ? prev - 1 : 0))}}>
+                <button className="sm:block hidden rounded-md border border-gray-500 text-gray-700 py-2 px-4 hover-hover:hover:bg-gray-500 hover-hover:hover:text-white active:bg-gray-500 active:text-white" onClick={() => {setProg(prev => (prev - 1 > 0 ? prev - 1 : 0))}}>
                   <ArrowLeftIcon className="w-5 h-5"/>
                 </button>
-                <button className="flex justify-center sm:hidden rounded-md border border-gray-500 text-gray-700 py-2 px-4 hover-hover:hover:bg-gray-500 hover-hover:hover:text-white" onClick={() => {setProg(prev => (prev - 1 > 0 ? prev - 1 : 0))}}>
+                <button className="flex justify-center sm:hidden rounded-md border border-gray-500 text-gray-700 py-2 px-4 hover-hover:hover:bg-gray-500 hover-hover:hover:text-white active:bg-gray-500 active:text-white" onClick={() => {setProg(prev => (prev - 1 > 0 ? prev - 1 : 0))}}>
                   <div className="flex flex-col relative">
                     <ArrowLeftIcon className="w-4 h-4 absolute top-1 -left-5"/>
                     <span className="w-16">ย้อนกลับ</span>
                   </div>
                 </button>
-                <button className="rounded-md border border-red-500 text-red-700 py-2 px-4 hover-hover:hover:bg-red-500 hover-hover:hover:text-white" onClick={() => {setStatus(false)}}>เป็นคำหยาบ</button>
-                <button className="rounded-md border border-green-500 text-green-700 py-2 px-4 hover-hover:hover:bg-green-500 hover-hover:hover:text-white" onClick={() => {setStatus(true)}}>ไม่เป็นคำหยาบ</button>
+                <button className="rounded-md border border-red-500 text-red-700 py-2 px-4 hover-hover:hover:bg-red-500 hover-hover:hover:text-white active:bg-red-500 active:text-white" onClick={() => {setStatus(false)}}>เป็นคำหยาบ</button>
+                <button className="rounded-md border border-green-500 text-green-700 py-2 px-4 hover-hover:hover:bg-green-500 hover-hover:hover:text-white active:bg-green-500 active:text-white" onClick={() => {setStatus(true)}}>ไม่เป็นคำหยาบ</button>
               </div>
             </>
           }
