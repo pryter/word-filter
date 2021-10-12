@@ -9,7 +9,11 @@ module.exports = {
         'Noto Sans Thai'
       ],
     },
-    extend: {},
+    extend: {
+      screens: {
+        'hover-hover': {'raw': '(hover: hover)'},
+      }
+    },
   },
   variants: {
     extend: {},
