@@ -9,6 +9,11 @@ export const getLearningSamples = async () => {
     return merged.filter((item) => (item === c)).length >= 3;
   })
 
+  const ext = forLearn.filter((item) => (Object.keys(item.data()).length >= 5)).
+  map((item) => (item.id)).filter((item) => (item.length > 1))
+
+  remove = [...remove, ...ext]
+
   remove = remove.filter((c, index) => {
       return remove.indexOf(c) === index
     });
