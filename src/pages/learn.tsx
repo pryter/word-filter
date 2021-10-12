@@ -5,6 +5,8 @@ import classnames from "classnames"
 import {Loader} from "../vectors/Loader";
 import {fail} from "assert";
 import Router from "next/router";
+import {motion} from "framer-motion";
+import {ExclamationIcon} from "@heroicons/react/outline";
 
 const Page = () => {
 
@@ -52,8 +54,23 @@ const Page = () => {
     }
   }
 
+  const variants = {
+    "close": {
+      y: -40
+    },
+    "open": {
+      y: 0
+    }
+  }
+
   return (
     <div className="font-display">
+      <div className="flex justify-center fixed w-full">
+        <motion.div variants={variants} initial="close" animate="open" transition={{duration: 1, delay: 1}} className="flex items-center space-x-2 rounded-full py-2 bg-white px-4 shadow-md">
+          <ExclamationIcon className="w-5 h-5 text-gray-600 animate-pulse"/>
+          <p className="text-gray-800 text-sm">มีการแสดงผลเนื้อหาที่หยาบคาย</p>
+        </motion.div>
+      </div>
       <div className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-purple-300 via-blue-200 to-pink-300">
         <div style={{minWidth: "300px"}} className="flex flex-col bg-white rounded-lg shadow-lg px-4 py-4 space-y-4 relative">
           <div>

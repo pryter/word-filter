@@ -4,6 +4,8 @@ import {ArrowRightIcon, BanIcon, CheckIcon} from "@heroicons/react/solid";
 import classnames from "classnames"
 import {Loader} from "../vectors/Loader";
 import Link from "next/link"
+import {ExclamationIcon} from "@heroicons/react/outline";
+import { motion } from "framer-motion";
 
 const thaiChars = ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ', 'ง', 'จ', 'ฉ', 'ช', 'ซ', 'ฌ', 'ญ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ', 'ณ', 'ด', 'ต', 'ถ', 'ท', 'ธ', 'น', 'บ', 'ป', 'ผ', 'ฝ', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ฤ', 'ล', 'ฦ', 'ว', 'ศ', 'ษ', 'ส', 'ห', 'ฬ', 'อ', 'ฮ', 'ฯ', 'ะ', 'ั', 'า', 'ำ', 'ิ', 'ี', 'ึ', 'ื', 'ุ', 'ู', 'ฺ', '฿', 'เ', 'แ', 'โ', 'ใ', 'ไ', 'ๅ', 'ๆ', '็', '่', '้', '๊', '๋', '์', 'ํ', '๎', '๏', '๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙', '๚', '๛', ' ']
 
@@ -34,8 +36,23 @@ const Page = () => {
     return !chars.some(val => (!thaiChars.includes(val)))
   }
 
+  const variants = {
+    "close": {
+      y: -40
+    },
+    "open": {
+      y: 0
+    }
+  }
+
   return (
     <div className="font-display">
+      <div className="flex justify-center fixed w-full">
+        <motion.div variants={variants} initial="close" animate="open" transition={{duration: 1, delay: 1}} className="flex items-center space-x-2 rounded-full py-2 bg-white px-4 shadow-md">
+          <ExclamationIcon className="w-5 h-5 text-gray-600 animate-pulse"/>
+          <p className="text-gray-800 text-sm">มีการแสดงผลเนื้อหาที่หยาบคาย</p>
+        </motion.div>
+      </div>
       <div className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-purple-300 via-blue-200 to-pink-300">
         <div className="flex flex-col bg-white rounded-lg shadow-lg px-4 py-4 space-y-4">
           <div>
