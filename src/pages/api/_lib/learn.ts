@@ -156,12 +156,12 @@ export const getLearningSamples = async () => {
   const sample = await initialiseDB.collection("samples").doc("main").get()
   let sampleData = []
 
-  if ((new Date().getTime() - sample.get("timestamp")) <= 60 * 60 * 1000) {
+  if ((new Date().getTime() - sample.get("timestamp")) >= 60 * 60 * 1000) {
     const {remove, dict} = await updateSamples()
 
     sampleData = remove
 
-    if ((new Date().getTime() - sample.get("timestamp")) <= 2 * 60 * 60 * 1000) {
+    if ((new Date().getTime() - sample.get("timestamp")) >= 2 * 60 * 60 * 1000) {
       const proved = await updateCore(dict)
 
       const fixed = remove.filter((item) => (!proved.includes(item)))
