@@ -62,7 +62,7 @@ const Page = () => {
           </div>
           {
             closed ? <div className="flex sm:flex-row flex-col sm:space-x-4 sm:space-y-0 space-y-2">
-              <p className="rounded-md text-center bg-gray-50 text-gray-400 py-2 px-4 w-full" onClick={submit}>คุณเคยส่งขอมูลไปแล้ว</p>
+              <p className="rounded-md text-center bg-gray-50 text-gray-400 py-2 px-4 w-full" onClick={submit}>คุณเคยส่งข้อมูลไปแล้ว</p>
             </div> : list.length === 0 ? <div className="flex sm:flex-row flex-col sm:space-x-4 sm:space-y-0 space-y-2">
               <button className="rounded-md border border-gray-500 text-gray-700 py-2 px-4 w-full" onClick={submit}>{loading ? <Loader/> : "เริ่มต้นเลย"}</button>
             </div> : <>
