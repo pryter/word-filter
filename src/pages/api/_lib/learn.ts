@@ -1,6 +1,7 @@
 import initialiseDB from "../../../lib/firebase-admin";
 
-export const getLearningSamples = async () => {
+
+const updateSamples = async () => {
   const dict = await initialiseDB.collection("submitted").get()
   const forLearn = dict.docs.filter((data) => (Object.values(data.data()).length >= 3))
   const learn = forLearn.map((item) => (Object.values(item.data()).map((item) => (item.full))))
@@ -15,10 +16,24 @@ export const getLearningSamples = async () => {
   remove = [...remove, ...ext]
 
   remove = remove.filter((c, index) => {
-      return remove.indexOf(c) === index
-    });
+    return remove.indexOf(c) === index
+  });
 
-  return {status: true, report: "success", data: {merged: remove}}
+  return remove
+}
+
+export const getLearningSamples = async () => {
+
+  const sample = await initialiseDB.collection("samples").doc("main").get()
+  let sampleData = []
+
+  if ((new Date().getTime() - sample.get("timestamp")) >= 60 * 60 * 1000) {
+    sampleData = await updateSamples()
+  }else{
+    sampleData = sample.get("data")
+  }
+
+  return {status: true, report: "success", data: {merged: sampleData}}
 }
 
 export const saveData = async (data) => {
