@@ -30,6 +30,13 @@ const updateSamples = async () => {
 
 const updateCore = async (dict) => {
   const learn = await initialiseDB.collection("learn").get()
+
+  learn.forEach((item) => {
+    if (Object.keys(item.data() || {}).length === 0){
+      item.ref.delete()
+    }
+  })
+
   let pass = {}
   let failed = {}
   let locations = {}
@@ -149,12 +156,12 @@ export const getLearningSamples = async () => {
   const sample = await initialiseDB.collection("samples").doc("main").get()
   let sampleData = []
 
-  if ((new Date().getTime() - sample.get("timestamp")) >= 60 * 60 * 1000) {
+  if ((new Date().getTime() - sample.get("timestamp")) <= 60 * 60 * 1000) {
     const {remove, dict} = await updateSamples()
 
     sampleData = remove
 
-    if ((new Date().getTime() - sample.get("timestamp")) >= 2 * 60 * 60 * 1000) {
+    if ((new Date().getTime() - sample.get("timestamp")) <= 2 * 60 * 60 * 1000) {
       const proved = await updateCore(dict)
 
       const fixed = remove.filter((item) => (!proved.includes(item)))
