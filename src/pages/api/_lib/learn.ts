@@ -20,6 +20,12 @@ const updateSamples = async () => {
     return remove.indexOf(c) === index
   });
 
+  const whiteList = (await initialiseDB.collection("whitelist").get()).docs.map((item) => (item.get("text")))
+
+  remove = remove.filter(i => {
+    return !whiteList.includes(i)
+  })
+
   await initialiseDB.collection("samples").doc("main").set({
     data: remove,
     timestamp: new Date().getTime()
@@ -99,6 +105,7 @@ const updateCore = async (dict) => {
     })
 
     forRemove.forEach((item) => {
+      initialiseDB.collection("whitelist").add({text: item})
       locations[item].forEach((o) => {
         batch.update(initialiseDB.collection("learn").doc(o), item, firestore.FieldValue.delete())
       })
