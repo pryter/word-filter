@@ -54,6 +54,7 @@ const updateCore = async (dict) => {
 
   let proved = []
   let forRemove = []
+  let updateLog = {}
 
   let merged = {...pass}
 
@@ -75,7 +76,11 @@ const updateCore = async (dict) => {
     if (fPercent <= 30) {
       forRemove.push(item)
     }
+
+    updateLog[item] = fPercent
   })
+
+  await initialiseDB.collection("reports").doc(new Date().getTime().toString()).set(updateLog)
 
   if (forRemove.length > 0) {
     const batch = initialiseDB.batch()
